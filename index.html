@@ -14,7 +14,7 @@
             </button>
         </div>
         <ul>
-            <li v-for = "(item,index) of list" :key = "index">{{item}}</li>
+            <todo-item v-for = "(item,index) of list" :key = "index" :content = "item"></todo-item>
 
         </ul>
 
@@ -22,8 +22,21 @@
 
 
     <script>
+
+        Vue.component('todo-item',{
+            props:['content'],
+            template: "<li>{{content}}</li>"
+        })
+
+        // var TodoItem = {
+        //     template:"<li>{{content}}</li>"
+        // }
+
         new Vue({
             el:"#root",
+            // components:{
+            //     'todo-item':TodoItem
+            // },
             data:{
                 inputvalue : "",
                 list:[]
